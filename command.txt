@@ -1,0 +1,8 @@
+Use the Compilation steps:
+
+arm-none-eabi-gcc -c -mcpu=cortex-m3 -mthumb -O2 -ffreestanding main.c -o main.o
+arm-none-eabi-ld -T linker.ld main.o -o firmware.elf
+arm-none-eabi-objcopy -O binary firmware.elf firmware.bin
+
+Running the Program
+qemu-system-arm -M lm3s6965evb -kernel firmware.elf
